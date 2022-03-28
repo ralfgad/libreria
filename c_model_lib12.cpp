@@ -45,10 +45,40 @@ ihc::FPhalf my_tanhfp16(ihc::FPhalf a) {
 	
 	
  }
+   ihc::FPsingle my_ffplusf_2_cyv(ihc::FPsingle  a, ihc::FPsingle  b, ihc::FPsingle  c,ihc::FPsingle  d, ihc::FPsingle  e ) {
+	return  (b*c+d*e+a);
+	
+	
+ } 
  
     ihc::FPsingle my_ffaccf_cyv(bool  c, ihc::FPsingle  a, ihc::FPsingle  b ) {
 
 		ihc::FPsingle aux;
+		if (c==true){
+		  aux=a*b;
+		  }
+		else {
+		  aux=a*b+aux;
+		  }
+		return aux;
+
+	
+ }
+
+    ihc::FPhalf my_ffplusf_cyv_half(ihc::FPhalf  a, ihc::FPhalf  b, ihc::FPhalf  c ) {
+	return  (b*c+a);
+	
+	
+ }
+   ihc::FPhalf my_ffplusf_2_cyv_half(ihc::FPhalf  a, ihc::FPhalf  b, ihc::FPhalf  c,ihc::FPhalf  d, ihc::FPhalf  e ) {
+	return  (b*c+d*e+a);
+	
+	
+ } 
+ 
+    ihc::FPhalf my_ffaccf_cyv_half(bool  c, ihc::FPhalf  a, ihc::FPhalf  b ) {
+
+		ihc::FPhalf aux;
 		if (c==true){
 		  aux=a*b;
 		  }

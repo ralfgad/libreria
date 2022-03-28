@@ -1,4 +1,4 @@
-module my_ff_plus_f_synapsys_h_cyv (
+module my_ff_plus_f_synapsys_v2_cyv (
 
 	input   clock,
 	input   resetn,
@@ -6,9 +6,11 @@ module my_ff_plus_f_synapsys_h_cyv (
 	input   iready,
 	output  ovalid, 
 	output  oready,
-	input    control,	
-	input   [31:0]  datainA,
-	input   [31:0] datainB,
+	input   [31:0] datainC,	
+	input   [31:0]  datainA0,
+	input   [31:0] datainB0,
+	input   [31:0]  datainA1,
+	input   [31:0] datainB1,    
 	output   [31:0]  dataout);
 	
 	
@@ -27,25 +29,20 @@ module my_ff_plus_f_synapsys_h_cyv (
   
   logic [15:0] datain_reg, datain_reg2,datain_reg3, datain_reg4;
   */
- // assign ovalid = 1'b1;
+  assign ovalid = 1'b1;
   assign oready = 1'b1;
-  // ivalid, iready, resetn are ignored
-  
-  reg [2:0] shifter ;
-  reg [6:0] shifter_valid;
-  wire empieza_acumular;
-  wire enable_magico;
-  wire [31:0] producto, producto_filtrado ;
-  //assign datainC=control?32'h00000000: dataout;
+  wire [31:0] intermedio;
+
+
+  reg [8:0][31:0] shifterA1,shifterB1 ;
+
   always @(posedge clock)
   begin
-	shifter<={control,shifter[2:1]};
-	shifter_valid<={ivalid,shifter_valid[6:1]};
-   end
-  assign empieza_acumular = shifter[0];
-  assign ovalid = shifter_valid[0];
-  assign enable_magico=shifter_valid[4]; //genial
-  assign producto_filtrado=enable_magico?producto:32'h00000000;
+	shifterA1<={datainA1,shifterA1[8:1]};
+	shifterB1<={datainB1,shifterB1[8:1]};	
+  end
+  // ivalid, iready, resetn are ignored
+  
 /*
 	multiplicador_ff u0 ( //latencia de 3
 		.clk    (clock),    //   input,   width = 1,    clk.clk
@@ -54,25 +51,29 @@ module my_ff_plus_f_synapsys_h_cyv (
 		.b      (datainB),      //   input,  width = 32,      b.b
 		.q      (result_float)       //  output,  width = 32,      q.q
 	);
-	*/	
+	*/
+	
 	//latencia 9
-	product_0002 mult_inst ( //latencia 3
+	mac_cyv_0002 mac_cyv_inst (
 		.clk    (clock),    //    clk.clk
 		.areset (!resetn), // areset.reset
 		.en     (1'b1),     //     en.en
-		.a      (datainA),      //      a.a
-		.b      (datainB),      //      b.b
-//		.c      (datainC),      //      c.c
-		.q      (producto)       //      q.q
+		.a      (datainA0),      //      a.a
+		.b      (datainB0),      //      b.b
+		.c      (datainC),      //      c.c
+		.q      (intermedio)       //      q.q
 	);
-     accu_0002  acc_int ( //latencia 4
-	 	.clk    (clock),    //    clk.clk
+	//latencia 9
+	mac_cyv_0002 mac_cyv_inst2 (
+		.clk    (clock),    //    clk.clk
 		.areset (!resetn), // areset.reset
 		.en     (1'b1),     //     en.en
-		.x      (producto_filtrado),      //      a.a
-		.n      (empieza_acumular),      //      b.b
-        .r      (dataout)
+		.a      (shifterA1[0]),      //      a.a
+		.b      (shifterB1[0]),      //      b.b
+		.c      (intermedio),      //      c.c
+		.q      (dataout)       //      q.q
 	);
+
 	 
 	 
 endmodule
