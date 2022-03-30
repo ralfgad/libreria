@@ -6,18 +6,18 @@ module accu_half_0002(
 	output logic  [15:0]  r
 );
 
-logic signed [18:0] acumulador, datoa,datoa_reg, pre_salida;
+logic signed [19:0] acumulador, datoa,datoa_reg, pre_salida;
 logic n_reg;
 
 Float2Fixed 
-#(.FIXEDSIZE(19),
+#(.FIXEDSIZE(20),
 .FLOATSIZE(16),
 .MANTISSABITS(10),
 .EXPONENTBITS(5)
 ) 
 float2fixA (
    .InFloat(x),
-   .InRadixPoint(8),
+   .InRadixPoint(11),
    .OutFixed(datoa),
     .OutException(),
     .OutOverflow()
@@ -51,14 +51,14 @@ always_ff @(posedge clock or negedge resetn)
     
 
 
-Fixed2Float #(.FIXEDSIZE(19),
+Fixed2Float #(.FIXEDSIZE(20),
  .FLOATSIZE(16),
 .MANTISSABITS(10),
 .EXPONENTBITS(5)
  )
  fix2float (
     .InFixed(acumulador),
-    .InRadixPoint(8),
+    .InRadixPoint(11),
     .OutFloat(pre_salida)
     ); 	
 endmodule

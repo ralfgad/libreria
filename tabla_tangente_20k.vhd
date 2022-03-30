@@ -3,7 +3,7 @@ USE ieee.std_logic_1164.all;
 USE ieee.std_logic_arith.all;
 USE ieee.std_logic_unsigned.all;
 USE ieee.math_real.all;
-use ieee.fixed_pkg.all;
+use work.fixed_pkg.all;
 
 entity tabla_tangente_20k is
     generic 

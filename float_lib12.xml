@@ -54,9 +54,9 @@
       <OUTPUT port="dataout" width="32"/>
     </INTERFACE>
     <REQUIREMENTS>
-      <FILE name="my_fp_tanh_FPsingle.v" />
-      <FILE name="top_tanh_FPsingle.v" />
-      <FILE name="memoria_single_port.v" />
+
+      <FILE name="fixed_pkg.vhd" />
+      <FILE name="tabla_tangente_20k.vhd" />    
       <FILE name="Fixed2Float.v" />
       <FILE name="Float2Fixed.v" />
       <FILE name="FixedShiftCalc.v" />
@@ -64,7 +64,9 @@
       <FILE name="NormalCases.v" />
       <FILE name="Overflow.v" />
       <FILE name="SpecialCases.v" />
-      <FILE name="tanh_4.hex" />
+      <FILE name="top_tanh_FPsingle_mix.v" />       
+      <FILE name="my_fp_tanh_FPsingle.v" />      
+
     </REQUIREMENTS>
   </FUNCTION>  	   
 	   
@@ -121,11 +123,17 @@
       <OUTPUT port="dataout" width="16"/>
     </INTERFACE>
     <REQUIREMENTS>
+      <FILE name="Fixed2Float.v" />
+      <FILE name="Float2Fixed.v" />
+      <FILE name="FixedShiftCalc.v" />
+      <FILE name="FixedShifter.v" />
+      <FILE name="NormalCases.v" />
+      <FILE name="Overflow.v" />
+      <FILE name="SpecialCases.v" />    
       <FILE name="fixed_pkg.vhd" />
-      <FILE name="tabla_tangente_20k.vhd" /> 
-      <FILE name="top_tanh_fp16_mix.v" />          
+      <FILE name="tabla_tangente_20k.vhd" />     
       <FILE name="my_fp_tanh_fp16.v" />
-
+      <FILE name="top_tanh_fp16_mix.v" />
 
 
 

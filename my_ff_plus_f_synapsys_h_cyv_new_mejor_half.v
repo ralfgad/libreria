@@ -15,7 +15,7 @@ module my_ff_plus_f_synapsys_h_cyv_half (
 	
 
  // assign ovalid = 1'b1;
-  assign oready = 1'b1;
+  assign oready = iready;
   // ivalid, iready, resetn are ignored
   
   reg [2:0] shifter ;
