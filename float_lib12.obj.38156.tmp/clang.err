@@ -1,0 +1,32 @@
+In file included from c_model_lib12.cpp:7:
+./float_lib12.h:11:15: warning: 'my_tanhbfloat16' has C-linkage specified, but returns incomplete type 'ihc::bfloat16' (aka 'hls_float<8, 7, fp_config::FP_Round::RNE>') which could be incompatible with C [-Wreturn-type-c-linkage]
+ihc::bfloat16 my_tanhbfloat16 (ihc::bfloat16 a);
+              ^
+./float_lib12.h:12:15: warning: 'my_tanhbfloat19' has C-linkage specified, but returns incomplete type 'ihc::bfloat19' (aka 'hls_float<8, 10, fp_config::FP_Round::RNE>') which could be incompatible with C [-Wreturn-type-c-linkage]
+ihc::bfloat19 my_tanhbfloat19 (ihc::bfloat19 a);
+              ^
+./float_lib12.h:13:13: warning: 'my_tanhfp16' has C-linkage specified, but returns incomplete type 'ihc::FPhalf' (aka 'hls_float<5, 10, fp_config::FP_Round::RNE>') which could be incompatible with C [-Wreturn-type-c-linkage]
+ihc::FPhalf my_tanhfp16 (ihc::FPhalf a);
+            ^
+./float_lib12.h:14:15: warning: 'my_tanhFPsingle' has C-linkage specified, but returns user-defined type 'ihc::FPsingle' (aka 'hls_float<8, 23, fp_config::FP_Round::RNE>') which is incompatible with C [-Wreturn-type-c-linkage]
+ihc::FPsingle my_tanhFPsingle (ihc::FPsingle a);
+              ^
+./float_lib12.h:15:15: warning: 'my_ffplusf_cyv' has C-linkage specified, but returns user-defined type 'ihc::FPsingle' (aka 'hls_float<8, 23, fp_config::FP_Round::RNE>') which is incompatible with C [-Wreturn-type-c-linkage]
+ihc::FPsingle my_ffplusf_cyv(ihc::FPsingle  a, ihc::FPsingle  b, ihc::FPsingle  c );
+              ^
+./float_lib12.h:16:15: warning: 'my_ffplusf_2_cyv' has C-linkage specified, but returns user-defined type 'ihc::FPsingle' (aka 'hls_float<8, 23, fp_config::FP_Round::RNE>') which is incompatible with C [-Wreturn-type-c-linkage]
+ihc::FPsingle my_ffplusf_2_cyv(ihc::FPsingle  a,ihc::FPsingle  b, ihc::FPsingle  c, ihc::FPsingle d, ihc::FPsingle  e );
+              ^
+./float_lib12.h:17:15: warning: 'my_ffaccf_cyv' has C-linkage specified, but returns user-defined type 'ihc::FPsingle' (aka 'hls_float<8, 23, fp_config::FP_Round::RNE>') which is incompatible with C [-Wreturn-type-c-linkage]
+ihc::FPsingle my_ffaccf_cyv(bool  c, ihc::FPsingle  a, ihc::FPsingle  b );
+              ^
+./float_lib12.h:18:13: warning: 'my_ffplusf_cyv_half' has C-linkage specified, but returns incomplete type 'ihc::FPhalf' (aka 'hls_float<5, 10, fp_config::FP_Round::RNE>') which could be incompatible with C [-Wreturn-type-c-linkage]
+ihc::FPhalf my_ffplusf_cyv_half(ihc::FPhalf  a, ihc::FPhalf  b, ihc::FPhalf  c );
+            ^
+./float_lib12.h:19:13: warning: 'my_ffplusf_2_cyv_half' has C-linkage specified, but returns incomplete type 'ihc::FPhalf' (aka 'hls_float<5, 10, fp_config::FP_Round::RNE>') which could be incompatible with C [-Wreturn-type-c-linkage]
+ihc::FPhalf my_ffplusf_2_cyv_half(ihc::FPhalf  a,ihc::FPhalf  b, ihc::FPhalf  c, ihc::FPhalf d, ihc::FPhalf  e );
+            ^
+./float_lib12.h:20:13: warning: 'my_ffaccf_cyv_half' has C-linkage specified, but returns incomplete type 'ihc::FPhalf' (aka 'hls_float<5, 10, fp_config::FP_Round::RNE>') which could be incompatible with C [-Wreturn-type-c-linkage]
+ihc::FPhalf my_ffaccf_cyv_half(bool  c, ihc::FPhalf  a, ihc::FPhalf  b );
+            ^
+10 warnings generated.

@@ -1,4 +1,4 @@
-module my_ff_plus_f_synapsys_v_cyv_half (
+module my_ff_plus_f_synapsys_v_cyv_half_prueba (
 
 	input   clock,
 	input   resetn,
@@ -6,10 +6,10 @@ module my_ff_plus_f_synapsys_v_cyv_half (
 	input   iready,
 	output  ovalid, 
 	output  oready,
-	input   [15:0] datainC,	
+	input   [31:0] datainC,	
 	input   [15:0]  datainA,
 	input   [15:0] datainB,
-	output   [15:0]  dataout);
+	output   [31:0]  dataout);
 	
 	
 	
@@ -42,7 +42,7 @@ module my_ff_plus_f_synapsys_v_cyv_half (
 	*/
 	
 	//latencia 4
-	mac_cyv_half_0003 mac_cyv_inst (
+	mac_cyv_half_0004 mac_cyv_inst_interes (
 		.clk    (clock),    //    clk.clk
 		.areset (!resetn), // areset.reset
 		.en     (1'b1),     //     en.en

@@ -34,7 +34,7 @@ module my_ff_plus_f_synapsys_h_cyv_half (
   assign enable_magico=shifter_valid[3]; //genial
   assign producto_filtrado=enable_magico?producto:16'h0000;
 
-	product_half_0002 mult_inst ( //latencia 3
+	product_half_0003 mult_inst ( //latencia 3
 		.clk    (clock),    //    clk.clk
 		.areset (!resetn), // areset.reset
 		.en     (1'b1),     //     en.en

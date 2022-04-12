@@ -65,7 +65,7 @@ module my_ff_plus_f_synapsys_h_cyv (
 //		.c      (datainC),      //      c.c
 		.q      (producto)       //      q.q
 	);
-     accu_0002  acc_int ( //latencia 4
+     accu_0002  acc_int ( //latencia4
 	 	.clk    (clock),    //    clk.clk
 		.areset (!resetn), // areset.reset
 		.en     (1'b1),     //     en.en

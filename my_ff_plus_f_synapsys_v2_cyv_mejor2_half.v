@@ -1,4 +1,4 @@
-module my_ff_plus_f_synapsys_v_cyv_half (
+module my_ff_plus_f_synapsys_v2_cyv_half (
 
 	input   clock,
 	input   resetn,
@@ -7,8 +7,10 @@ module my_ff_plus_f_synapsys_v_cyv_half (
 	output  ovalid, 
 	output  oready,
 	input   [15:0] datainC,	
-	input   [15:0]  datainA,
-	input   [15:0] datainB,
+	input   [15:0]  datainA0,
+	input   [15:0] datainB0,
+	input   [15:0]  datainA1,
+	input   [15:0] datainB1,    
 	output   [15:0]  dataout);
 	
 	
@@ -29,6 +31,17 @@ module my_ff_plus_f_synapsys_v_cyv_half (
   */
   assign ovalid = 1'b1;
   assign oready = 1'b1;
+  wire [15:0] intermedio;
+
+
+  reg [3:0][15:0] shifterA1,shifterB1 ;
+
+  always @(posedge clock)
+  begin
+	shifterA1<={datainA1,shifterA1[3:1]};
+	shifterB1<={datainB1,shifterB1[3:1]};	
+
+  end
   // ivalid, iready, resetn are ignored
   
 /*
@@ -41,17 +54,26 @@ module my_ff_plus_f_synapsys_v_cyv_half (
 	);
 	*/
 	
-	//latencia 4
+	//latencia 8
 	mac_cyv_half_0003 mac_cyv_inst (
 		.clk    (clock),    //    clk.clk
 		.areset (!resetn), // areset.reset
 		.en     (1'b1),     //     en.en
-		.a      (datainA),      //      a.a
-		.b      (datainB),      //      b.b
+		.a      (datainA0),      //      a.a
+		.b      (datainB0),      //      b.b
 		.c      (datainC),      //      c.c
+		.q      (intermedio)       //      q.q
+	);
+	//latencia 8
+	mac_cyv_half_0003 mac_cyv_inst2 (
+		.clk    (clock),    //    clk.clk
+		.areset (!resetn), // areset.reset
+		.en     (1'b1),     //     en.en
+		.a      (shifterA1[0]),      //      a.a
+		.b      (shifterB1[0]),      //      b.b
+		.c      (intermedio),      //      c.c
 		.q      (dataout)       //      q.q
 	);
-
 
 	 
 	 

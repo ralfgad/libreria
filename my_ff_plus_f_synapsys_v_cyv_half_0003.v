@@ -1,4 +1,4 @@
-module my_ff_plus_f_synapsys_v_cyv_half (
+module my_ff_plus_f_synapsys_v_cyv_half_0003 (
 
 	input   clock,
 	input   resetn,
@@ -41,7 +41,7 @@ module my_ff_plus_f_synapsys_v_cyv_half (
 	);
 	*/
 	
-	//latencia 4
+	//latencia 9
 	mac_cyv_half_0003 mac_cyv_inst (
 		.clk    (clock),    //    clk.clk
 		.areset (!resetn), // areset.reset

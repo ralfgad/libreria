@@ -1,7 +1,7 @@
 // synopsys translate_off
 `timescale 1 ps / 1 ps
 // synopsys translate_on
-module my_fp_tanh_fp16 (
+module my_fp_tanh_fp16_prueba (
 
 	input   clock,
 	input   resetn,
@@ -9,7 +9,7 @@ module my_fp_tanh_fp16 (
 	input   iready,
 	output  ovalid, 
 	output  oready,
-	input   [15:0]  datain,
+	input   [31:0]  datain,
 	output  [15:0]  dataout);
 	
 	
@@ -18,7 +18,7 @@ module my_fp_tanh_fp16 (
   // ivalid, iready, resetn are ignored
   
 
-	top_tanh_fp16_mix	inst(
+	top_tanh_fp16_mix_prueba	inst_interes4(
 				.clk(clock),
 				.enable(1'b1),
 				.num_entrada(datain),
